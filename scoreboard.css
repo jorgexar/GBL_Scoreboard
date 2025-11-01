@@ -7,7 +7,6 @@
 }
 body{
     width: 1000px;
-    height: 100vh;
     background-color: whitesmoke;
    
 }
@@ -118,9 +117,12 @@ background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(99, 98, 98, 1) 50%, 
     height: 75%;
 
 }
-.foul:nth-child(1){
+.active{
     background-color: red;
 }
+/* .foul:nth-child(1){
+    background-color: red;
+} */
 /* BOT SECTION */
 .bot{
     background-color: rgb(37, 37, 37);
