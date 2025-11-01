@@ -113,12 +113,12 @@ background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(99, 98, 98, 1) 50%, 
 }
 .foul{
     width: 15%;
-    background-color: white;
+    background-color: rgb(145, 145, 145);
     height: 75%;
 
 }
 .active{
-    background-color: red;
+    background-color: rgb(248, 211, 43);
 }
 /* .foul:nth-child(1){
     background-color: red;
