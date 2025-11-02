@@ -12,19 +12,29 @@ const away_logo = document.getElementById("awayLogo");
 const away_score = document.getElementById("awayScore").firstChild;
 const away_fouls = document.getElementById("awayFouls");
 
+const scores = [home_score,away_score]
 
 function addScore(team, points) {
-    if (team == "H"){
-        team_score = home_score.innerText;
-        team_score = parseInt(team_score);
-        team_score += points;
-        home_score.innerText = team_score;
-        return 1;
+    var teams = {
+        'H':0,
+        'A':1
     }
-    if (team == "A"){
-        team_score = away_score.innerText;
-        team_score = parseInt(team_score);
-        team_score += points;
-        away_score.innerText = team_score;
-    }
+    team_score = scores[teams[team]].innerText;
+    team_score = parseInt(team_score);
+    team_score += points;
+    scores[teams[team]].innerText = team_score;
+
+    // if (team == "H"){
+    //     team_score = scores;
+    //     team_score = parseInt(team_score);
+    //     team_score += points;
+    //     home_score.innerText = team_score;
+    //     return 1;
+    // }
+    // if (team == "A"){
+    //     team_score = away_score.innerText;
+    //     team_score = parseInt(team_score);
+    //     team_score += points;
+    //     away_score.innerText = team_score;
+    // }
 }
