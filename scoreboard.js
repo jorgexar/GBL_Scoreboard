@@ -12,7 +12,9 @@ const away_logo = document.getElementById("awayLogo");
 const away_score = document.getElementById("awayScore").firstChild;
 const away_fouls = document.getElementById("awayFouls");
 
-const scores = [home_score,away_score]
+const scores = [home_score,away_score];
+const fouls = [home_fouls, away_fouls];
+const foul_count = [0,0];
 
 function addScore(team, points) {
     var teams = {
@@ -24,17 +26,20 @@ function addScore(team, points) {
     team_score += points;
     scores[teams[team]].innerText = team_score;
 
-    // if (team == "H"){
-    //     team_score = scores;
-    //     team_score = parseInt(team_score);
-    //     team_score += points;
-    //     home_score.innerText = team_score;
-    //     return 1;
-    // }
-    // if (team == "A"){
-    //     team_score = away_score.innerText;
-    //     team_score = parseInt(team_score);
-    //     team_score += points;
-    //     away_score.innerText = team_score;
-    // }
+}
+function foul(team, value) {
+    var teams = {
+        'H':0,
+        'A':1
+    }
+    if (value > 0  && foul_count[teams[team]] < 5){
+        foul_count[teams[team]] += value;
+    }
+    else if(value < 0 && foul_count[teams[team]] > 0){
+        foul_count[teams[team]] += value;
+    }
+    // foul_count[teams[team]] += value;
+    console.log(foul_count[teams[team]])
+    console.log(fouls[teams[team]]);
+    
 }

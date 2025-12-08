@@ -56,30 +56,100 @@
             </div>
         </div>
     </div>
-    <div class="controlPanel">
-        <div class="formPanel" id="homeForm"><form action="">
-            <label for="homeName">Γηπεδούχος</label>
-            <input type="text" name="homeName" id="homeName" placeholder="ARIS">
-            
+    <div class="control-panel">
+        <!-- <section class="left-panel">
+            <div class="formPanel" id="homeForm"><form action="">
+            <div>
+                <label for="homeName">Γηπεδούχος</label>
+                <input type="text" name="homeName" id="homeName" placeholder="ARIS">
+            </div>
             <input type="number" name="homeScore" min="0" id="panel_display_home_score" disabled placeholder="0">
-            <input type="button" value="+1" onclick="addScore('H',1)">
-            <input type="button" value="+2" onclick="addScore('H',2)">
-            <input type="button" value="+3" onclick="addScore('H',3)">
+            <input type="button" class="score-button" value="+1" onclick="addScore('H',1)">
+            <input type="button" class="score-button" value="+2" onclick="addScore('H',2)">
+            <input type="button" class="score-button" value="+3" onclick="addScore('H',3)">
             
             
 
         </form></div>
-        <div class="formPanel" id="awayForm">
+        </section>
+        <section class="right-panel">
+             <div class="formPanel" id="awayForm">
             <label for="homeName">Φιλοξενουμενος</label>
             <input type="text" name="panel_home_name" id="panel_home_name" placeholder="PAOK">
             
             <input type="number" name="panel_display_away_score" min="0" id="panel_display_away_score" disabled placeholder="0">
             
 
-            <input type="button" value="+1" onclick="addScore('A',1)">
-            <input type="button" value="+2" onclick="addScore('A',2)">
-            <input type="button" value="+3" onclick="addScore('A',3)">
+            <input type="button" class="score-button" value="+1" onclick="addScore('A',1)">
+            <input type="button" class="score-button" value="+2" onclick="addScore('A',2)">
+            <input type="button" class="score-button" value="+3" onclick="addScore('A',3)">
         </div>
+        </section> -->
+        <div class="left-panel">
+            <div class="select-team-wrap"> 
+                <label for="home-team">Γηπεδούχος</label>           
+                <select name="home-team" id="home-team">
+                    <option value="AEK">ΑΕΚ</option>
+                    <option value="ARIS">ΑΡΗΣ</option>
+                    <option value="IRAKLIS">ΗΡΑΚΛΗΣ</option>
+                    <option value="KARDITSA">ΚΑΡΔΙΤΣΑ ΙΑΠΩΙΚΗ</option>
+                    <option value="KOLOSSOS">ΚΟΛΟΣΣΟΣ</option>
+                    <option value="MAROUSI">ΜΑΡΟΥΣΙ</option>
+                    <option value="MYKONOS">ΜΥΚΟΝΟΣ</option>
+                    <option value="OLYMPIAKOS">ΟΛΥΜΠΙΑΚΟΣ</option>
+                    <option value="PANATHINAIKOS">ΠΑΝΑΘΗΝΑΪΚΟΣ</option>
+                    <option value="PANIONIOS">ΠΑΝΙΩΝΙΟΣ</option>
+                    <option value="PAOK">ΠΑΟΚ</option>
+                    <option value="PERISTERI">ΠΕΡΙΣΤΕΡΙ</option>
+                    <option value="PROMITHEAS">ΠΡΟΜΗΘΕΑΣ ΠΑΤΡΑΣ </option>
+                </select>
+            </div>
+            <div class="score-buttons-wrap">
+            <label for="">Score</label>
+            <input type="button" class="score-button" value="+1" onclick="addScore('H',1)">
+            <input type="button" class="score-button" value="+2" onclick="addScore('H',2)">
+            <input type="button" class="score-button" value="+3" onclick="addScore('H',3)">
+            </div>
+            <div class="foul-buttons-wrap">
+                <label for="">Fouls</label>
+                <input type="button" class="foul-button" value="-" onclick="foul('H',-1)">
+                <input type="button" class="foul-button" value="+" onclick="foul('H',1)">
+            </div>
+
+        </div>
+        <div class="right-panel">
+            <div class="select-team-wrap">
+                <label for="away-team">Γηπεδούχος</label> 
+                <select name="away-team" id="away-team">
+                <option value="AEK">ΑΕΚ</option>
+                <option value="ARIS">ΑΡΗΣ</option>
+                <option value="IRAKLIS">ΗΡΑΚΛΗΣ</option>
+                <option value="KARDITSA">ΚΑΡΔΙΤΣΑ ΙΑΠΩΙΚΗ</option>
+                <option value="KOLOSSOS">ΚΟΛΟΣΣΟΣ</option>
+                <option value="MAROUSI">ΜΑΡΟΥΣΙ</option>
+                <option value="MYKONOS">ΜΥΚΟΝΟΣ</option>
+                <option value="OLYMPIAKOS">ΟΛΥΜΠΙΑΚΟΣ</option>
+                <option value="PANATHINAIKOS">ΠΑΝΑΘΗΝΑΪΚΟΣ</option>
+                <option value="PANIONIOS">ΠΑΝΙΩΝΙΟΣ</option>
+                <option value="PAOK">ΠΑΟΚ</option>
+                <option value="PERISTERI">ΠΕΡΙΣΤΕΡΙ</option>
+                <option value="PROMITHEAS">ΠΡΟΜΗΘΕΑΣ ΠΑΤΡΑΣ </option>
+                
+            </select>
+            </div>
+            <div class="score-buttons-wrap">
+            <label for="">Score</label>
+            <input type="button" class="score-button" value="+1" onclick="addScore('A',1)">
+            <input type="button" class="score-button" value="+2" onclick="addScore('A',2)">
+            <input type="button" class="score-button" value="+3" onclick="addScore('A',3)">
+            </div>
+            <div class="foul-buttons-wrap">
+                <label for="">Fouls</label>
+                <input type="button" class="foul-button" value="-" onclick="foul('A',-1)">
+                <input type="button" class="foul-button" value="+" onclick="foul('A',1)">
+            </div>
+        </div>
+       
     </div>
 </body>
 <script src="scoreboard.js"></script>

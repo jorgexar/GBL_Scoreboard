@@ -1,14 +1,31 @@
 :root{
     --team-font-size: 40px;
     --gbl-logo: url("img/GBL STOIXIMAN HORIZONTAL WHITE.png");
+    --main-bg :  url("https://www.dzinsights.com/services/blog-manager/public/BLOG/b90519c0-f7f6-48e2-8d9f-87e142afdd3d.webp");
 }
 *{
     font-family:Arial, Helvetica, sans-serif;
 }
 body{
     width: 1000px;
-    background-color: whitesmoke;
+    border: 1px solid #ffffff31;
+    backdrop-filter: blur(10px);
+    margin: 0 auto;
+    height: 100vh;
+    background-color: rgb(93, 134, 93);
+    background-image: var(--main-bg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
    
+}
+.control-panel{
+    display: grid;
+    grid-template-columns: auto auto;
+}
+.left-panel, .right-panel{
+    border: 1px solid red;
+    color: #fff;
 }
 
 .scoreboard{
