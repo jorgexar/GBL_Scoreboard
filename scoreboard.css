@@ -19,13 +19,21 @@ body{
     background-position: center center;
    
 }
+
 .control-panel{
     display: grid;
     grid-template-columns: auto auto;
 }
 .left-panel, .right-panel{
-    border: 1px solid red;
     color: #fff;
+}
+
+.left-panel div, .right-panel div{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: center;
+    padding: 10px;
 }
 
 .scoreboard{
@@ -87,7 +95,7 @@ body{
     justify-content: flex-end;
     overflow: hidden;
     width: 30%;
-     background-size:cover;
+    background-size:cover;
     background-repeat: no-repeat;
     background-position: center;
 }
@@ -134,8 +142,11 @@ background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(99, 98, 98, 1) 50%, 
     height: 75%;
 
 }
-.active{
+.yellow{
     background-color: rgb(248, 211, 43);
+}
+.red{
+    background-color: red;
 }
 /* .foul:nth-child(1){
     background-color: red;
@@ -181,4 +192,12 @@ background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(99, 98, 98, 1) 50%, 
 }
 .attackTimer{
     font-size: 30px;
+}
+
+.score-button,.foul-button, select{
+    background: #962b00;
+    background: radial-gradient(circle, rgb(255, 255, 255) 0%, rgba(250, 103, 45, 1) 60%, rgba(0, 2, 64, 1) 100%);
+    font-size: 1.6rem;
+    text-align: center;
+
 }
