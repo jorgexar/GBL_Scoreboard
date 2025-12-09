@@ -12,25 +12,52 @@ const away_logo = document.getElementById("awayLogo");
 const away_score = document.getElementById("awayScore").firstChild;
 const away_fouls = document.getElementById("awayFouls");
 
-// const scores = [home_score,away_score];
-// const fouls = [home_fouls, away_fouls];
-// const foul_count = [0,0];
 
-let homeTeam = {
+//TIMER EXPERIMENTS ---
+const periodTimerDisplay = document.getElementById("timer-display");
+
+
+let periodTimer = {
+    INITIAL_MINUTES : 10,
+    INITIAL_SECONDS : this.INITIAL_MINUTES * 60,
+    DISPLAY_MINUTES : this.INITIAL_SECONDS / 60,
+    DISPLAY_SECONDS : Math.floor(this.INITIAL_SECONDS % 60),
+    CURRENT_SECONDS : this.INITIAL_SECONDS,
+    COUNTER: setInterval(() => this.run(), 1000),
+    RUNNING : false,
+    update(){
+        this.DISPLAY_MINUTES = this.CURRENT_SECONDS / 60;
+        this.DISPLAY_SECONDS =  Math.floor(this.CURRENT_SECONDS % 60);
+    },
+    run(){
+        this.RUNNING = true;
+        this.update();
+        this.CURRENT_SECONDS--;
+        console.log("hello" + this.COUNTER);
+    }
+}
+
+
+// ---TIMER BLOCK ENDS 
+
+
+
+const teams = [
+    homeTeam = {
     name : "Home Team",
     currentScore : 0,
     scoreShow : home_score,
     currentFouls : 0,
     foulsShow : home_fouls.children
-}
-let awayTeam = {
-    name: "Away Team",
-    currentScore : 0,
-    scoreShow : away_score,
-    currentFouls: 0,
-    foulsShow : away_fouls.children
-}
-const teams = [homeTeam, awayTeam];
+    },
+    awayTeam = {
+        name: "Away Team",
+        currentScore : 0,
+        scoreShow : away_score,
+        currentFouls: 0,
+        foulsShow : away_fouls.children
+    }
+];
 const teamsKey = {
     'H':0,
     'A':1

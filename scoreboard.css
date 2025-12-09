@@ -196,7 +196,7 @@ background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(99, 98, 98, 1) 50%, 
 
 .score-button,.foul-button, select{
     background: #962b00;
-    background: radial-gradient(circle, rgb(255, 255, 255) 0%, rgba(250, 103, 45, 1) 60%, rgba(0, 2, 64, 1) 100%);
+    background: radial-gradient(circle, rgb(255, 206, 143) 0%, rgba(250, 103, 45, 1) 60%, rgba(0, 2, 64, 0) 100%);
     font-size: 1.6rem;
     text-align: center;
 

@@ -46,7 +46,7 @@
         <div class="bot Section">
             <div class="gblLogo"></div>
             <div class="gameInfo">
-                <div class="timer">10:00</div>
+                <div class="timer" id="timer-display">10:00</div>
                 <div class="periodInfo">
                     <div class="currentPeriod">
                         1η
@@ -149,8 +149,11 @@
                 <input type="button" class="foul-button" value="+" onclick="foul('A',1)">
             </div>
         </div>
-       
+       <div>
+        <button onclick="toggleTimer()">Start/Pause timer</button>
     </div>
+    </div>
+    
 </body>
 <script src="scoreboard.js"></script>
 </html>
