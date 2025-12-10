@@ -25,6 +25,9 @@ let COUNTER = 0;
 let RUNNING = false;
 let countdownTimer;
 function updateTimer(){
+    if (CURRENT_SECONDS <= 0){
+        CURRENT_SECONDS = INITIAL_SECONDS;
+    }
     CURRENT_SECONDS--;
     DISPLAY_MINUTES =  parseInt(CURRENT_SECONDS / 60);
     DISPLAY_SECONDS =  Math.floor(CURRENT_SECONDS % 60);
@@ -36,13 +39,15 @@ function updateTimer(){
         console.log(`${DISPLAY_MINUTES} : ${DISPLAY_SECONDS}`);
     }
     if(CURRENT_SECONDS === 0){
+        RUNNING = false;
         pauseTimer();
     }
 }
 function runTimer(){
-    countdownTimer = setInterval(()=>updateTimer(), 100);
+    countdownTimer = setInterval(()=>updateTimer(), 1000);
 };
 function pauseTimer(){
+    
     clearInterval(countdownTimer);
 };
 
