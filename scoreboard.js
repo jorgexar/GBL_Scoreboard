@@ -16,30 +16,84 @@ const away_fouls = document.getElementById("awayFouls");
 //TIMER EXPERIMENTS ---
 const periodTimerDisplay = document.getElementById("timer-display");
 
-
-let periodTimer = {
-    INITIAL_MINUTES : 10,
-    INITIAL_SECONDS : this.INITIAL_MINUTES * 60,
-    DISPLAY_MINUTES : this.INITIAL_SECONDS / 60,
-    DISPLAY_SECONDS : Math.floor(this.INITIAL_SECONDS % 60),
-    CURRENT_SECONDS : this.INITIAL_SECONDS,
-    COUNTER: setInterval(() => this.run(), 1000),
-    RUNNING : false,
-    update(){
-        this.DISPLAY_MINUTES = this.CURRENT_SECONDS / 60;
-        this.DISPLAY_SECONDS =  Math.floor(this.CURRENT_SECONDS % 60);
-    },
-    run(){
-        this.RUNNING = true;
-        this.update();
-        this.CURRENT_SECONDS--;
-        console.log("hello" + this.COUNTER);
+const INITIAL_MINUTES = 10;
+const INITIAL_SECONDS = INITIAL_MINUTES * 60;
+let DISPLAY_MINUTES = INITIAL_SECONDS / 60;
+let DISPLAY_SECONDS = Math.floor(INITIAL_SECONDS % 60);
+let CURRENT_SECONDS = INITIAL_SECONDS;
+let COUNTER = 0;
+let RUNNING = false;
+let countdownTimer;
+function updateTimer(){
+    CURRENT_SECONDS--;
+    DISPLAY_MINUTES =  parseInt(CURRENT_SECONDS / 60);
+    DISPLAY_SECONDS =  Math.floor(CURRENT_SECONDS % 60);
+    if (DISPLAY_SECONDS < 10){
+        periodTimerDisplay.innerText =`${DISPLAY_MINUTES}:0${DISPLAY_SECONDS}`;
+        console.log(`${DISPLAY_MINUTES} : 0${DISPLAY_SECONDS}`);
+    }else{
+        periodTimerDisplay.innerText =`${DISPLAY_MINUTES}:${DISPLAY_SECONDS}`;
+        console.log(`${DISPLAY_MINUTES} : ${DISPLAY_SECONDS}`);
     }
+    if(CURRENT_SECONDS === 0){
+        pauseTimer();
+    }
+}
+function runTimer(){
+    countdownTimer = setInterval(()=>updateTimer(), 100);
+};
+function pauseTimer(){
+    clearInterval(countdownTimer);
+};
+
+function toggleTimer(){
+    RUNNING = !RUNNING;
+    if(RUNNING){
+        console.log("Timer is now running...");
+        runTimer();
+    }else{
+        console.log("Timer is now paused.")
+        pauseTimer();
+}
+
 }
 
 
-// ---TIMER BLOCK ENDS 
 
+// let periodTimer = {
+//     INITIAL_MINUTES : 10,
+//     init(){
+
+//         INITIAL_SECONDS : this.INITIAL_MINUTES * 60;
+//         DISPLAY_MINUTES : this.INITIAL_SECONDS / 60;
+//         DISPLAY_SECONDS : Math.floor(this.INITIAL_SECONDS % 60);
+//         CURRENT_SECONDS : this.INITIAL_SECONDS;
+//         COUNTER : 0;
+//         RUNNING : false;
+//     },
+//     showStats(){
+//         return DISPLAY_MINUTES;
+//     }
+//     // updateCountdown : function(){
+//     //     this.DISPLAY_MINUTES = this.CURRENT_SECONDS / 60;
+//     //     this.DISPLAY_SECONDS =  Math.floor(this.CURRENT_SECONDS % 60);
+//     //     clearInterval(this.COUNTER);
+//     //     console.log("UPDATED");
+//     // },
+//     // RUN: function(){
+//     //     // this.RUNNING = true;
+//     //     // this.update();
+//     //     this.COUNTER++;
+//     //     this.CURRENT_SECONDS--;
+//     //     console.log(isNaN(this.COUNTER));
+        
+//     // }
+    
+// }
+// // let counter = setInterval(periodTimer.RUN, 1000);
+// periodTimer.init();
+// console.log(periodTimer.showStats());
+// ---TIMER BLOCK ENDS 
 
 
 const teams = [
