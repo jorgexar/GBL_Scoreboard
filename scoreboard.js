@@ -117,7 +117,7 @@ function addScore(team, points) {
     let currTeam = teams[teamsKey[team]];    
     currTeam.currentScore += points;
     currTeam.scoreShow.innerText = currTeam.currentScore;
-    toggleTimer();
+    pauseTimer();
     resetTimer();
 
 }
@@ -130,7 +130,7 @@ function foul(team, value) {
     }
     renderFouls(currTeam);
     console.log(currTeam.currentFouls);
-    toggleTimer();
+    pauseTimer();
 }
 function renderFouls(team){
     let color = "yellow";
