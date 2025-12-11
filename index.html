@@ -51,7 +51,7 @@
                     <div class="currentPeriod">
                         1η
                     </div>
-                    <div class="attackTimer">24</div>
+                    <div class="attackTimer" id="attack-timer-display">24</div>
                 </div>
             </div>
         </div>
@@ -149,8 +149,13 @@
                 <input type="button" class="foul-button" value="+" onclick="foul('A',1)">
             </div>
         </div>
-       <div>
-        <button onclick="toggleTimer()">Start/Pause timer</button>
+       <div class="timers-wrap">
+        <label for="period-timer">Period Timer</label>
+        <button onclick="toggleTimer('period')" name="period-timer">Start/Pause  PERIOD timer</button>
+
+        <label for="attack-timer">Attack Timer</label>
+        <button onclick="toggleTimer('attack')">Start/Pause  Attack timer</button>
+        <button onclick="resetTimer('attack')">Reset  Attack timer</button>
     </div>
     </div>
     

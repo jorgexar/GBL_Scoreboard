@@ -15,51 +15,103 @@ const away_fouls = document.getElementById("awayFouls");
 
 //TIMER EXPERIMENTS ---
 const periodTimerDisplay = document.getElementById("timer-display");
+const attackTimerDisplay = document.getElementById("attack-timer-display");
 
 const INITIAL_MINUTES = 10;
 const INITIAL_SECONDS = INITIAL_MINUTES * 60;
 let DISPLAY_MINUTES = INITIAL_SECONDS / 60;
 let DISPLAY_SECONDS = Math.floor(INITIAL_SECONDS % 60);
 let CURRENT_SECONDS = INITIAL_SECONDS;
-let COUNTER = 0;
-let RUNNING = false;
+
+let PERIOD_RUNNING = false;
+let ATTACK_RUNNING = false;
 let countdownTimer;
-function updateTimer(){
-    if (CURRENT_SECONDS <= 0){
-        CURRENT_SECONDS = INITIAL_SECONDS;
+
+const INITIAL_ATTACK_TIME = 24;
+let CURRENT_ATTACK_TIME = INITIAL_ATTACK_TIME;
+let attackTimer;
+
+
+function updateTimer(timerName){
+    if(timerName === "period"){
+
+    
+        if (CURRENT_SECONDS <= 0){
+            CURRENT_SECONDS = INITIAL_SECONDS;
+        }
+        CURRENT_SECONDS--;
+        DISPLAY_MINUTES =  parseInt(CURRENT_SECONDS / 60);
+        DISPLAY_SECONDS =  Math.floor(CURRENT_SECONDS % 60);
+        if (DISPLAY_SECONDS < 10){
+            periodTimerDisplay.innerText =`${DISPLAY_MINUTES}:0${DISPLAY_SECONDS}`;
+            console.log(`${DISPLAY_MINUTES} : 0${DISPLAY_SECONDS}`);
+        }else{
+            periodTimerDisplay.innerText =`${DISPLAY_MINUTES}:${DISPLAY_SECONDS}`;
+            console.log(`${DISPLAY_MINUTES} : ${DISPLAY_SECONDS}`);
+        }
+        if(CURRENT_SECONDS === 0){
+            RUNNING = false;
+            pauseTimer();
+        }
     }
-    CURRENT_SECONDS--;
-    DISPLAY_MINUTES =  parseInt(CURRENT_SECONDS / 60);
-    DISPLAY_SECONDS =  Math.floor(CURRENT_SECONDS % 60);
-    if (DISPLAY_SECONDS < 10){
-        periodTimerDisplay.innerText =`${DISPLAY_MINUTES}:0${DISPLAY_SECONDS}`;
-        console.log(`${DISPLAY_MINUTES} : 0${DISPLAY_SECONDS}`);
-    }else{
-        periodTimerDisplay.innerText =`${DISPLAY_MINUTES}:${DISPLAY_SECONDS}`;
-        console.log(`${DISPLAY_MINUTES} : ${DISPLAY_SECONDS}`);
-    }
-    if(CURRENT_SECONDS === 0){
-        RUNNING = false;
-        pauseTimer();
+    if(timerName === 'attack'){
+        CURRENT_ATTACK_TIME--;
+        attackTimerDisplay.innerText = String(CURRENT_ATTACK_TIME);
+        console.log(CURRENT_ATTACK_TIME)
+        if(CURRENT_ATTACK_TIME === 0){
+            pauseTimer(timerName)
+            CURRENT_ATTACK_TIME = INITIAL_ATTACK_TIME;
+        }
     }
 }
-function runTimer(){
-    countdownTimer = setInterval(()=>updateTimer(), 1000);
+function runTimer(timerName){
+    if(timerName === 'period'){
+        countdownTimer = setInterval(()=>updateTimer(timerName), 1000);
+    }else{
+        attackTimer = setInterval(()=>updateTimer(timerName), 100);
+    }
 };
-function pauseTimer(){
-    
-    clearInterval(countdownTimer);
+function pauseTimer(timerName){
+    if(timerName === 'period'){
+        clearInterval(countdownTimer);
+    }else{
+        clearInterval(attackTimer);
+    }
 };
 
-function toggleTimer(){
-    RUNNING = !RUNNING;
-    if(RUNNING){
-        console.log("Timer is now running...");
-        runTimer();
-    }else{
-        console.log("Timer is now paused.")
-        pauseTimer();
+function resetTimer(timerName){
+    if(timerName === 'period'){
+
+    }
+    if(timerName === 'attack'){
+        ATTACK_RUNNING = false;
+        clearInterval(attackTimer);
+        CURRENT_ATTACK_TIME = INITIAL_ATTACK_TIME;
+        attackTimerDisplay.innerText = CURRENT_ATTACK_TIME;
+    }
 }
+function toggleTimer(timerName){
+    if(timerName === 'period'){
+
+        PERIOD_RUNNING = !PERIOD_RUNNING ;
+        if(PERIOD_RUNNING){
+            console.log("Timer is now running...");
+            runTimer(timerName);
+        }else{
+            console.log("Timer is now paused.")
+            pauseTimer(timerName);
+        }
+    }
+    if(timerName === 'attack'){
+        ATTACK_RUNNING = !ATTACK_RUNNING;
+        if(ATTACK_RUNNING){
+            console.log("Timer is now running...");
+            runTimer(timerName);
+        }else{
+            console.log("Timer is now paused.")
+            pauseTimer(timerName);
+        }
+    }
 
 }
 
