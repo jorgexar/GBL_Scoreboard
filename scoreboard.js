@@ -90,45 +90,9 @@ function toggleTimer(){
     
 
 }
+// --- END OF TIMER EXPERIMENTS
 
-
-
-// let periodTimer = {
-//     INITIAL_MINUTES : 10,
-//     init(){
-
-//         INITIAL_SECONDS : this.INITIAL_MINUTES * 60;
-//         DISPLAY_MINUTES : this.INITIAL_SECONDS / 60;
-//         DISPLAY_SECONDS : Math.floor(this.INITIAL_SECONDS % 60);
-//         CURRENT_SECONDS : this.INITIAL_SECONDS;
-//         COUNTER : 0;
-//         RUNNING : false;
-//     },
-//     showStats(){
-//         return DISPLAY_MINUTES;
-//     }
-//     // updateCountdown : function(){
-//     //     this.DISPLAY_MINUTES = this.CURRENT_SECONDS / 60;
-//     //     this.DISPLAY_SECONDS =  Math.floor(this.CURRENT_SECONDS % 60);
-//     //     clearInterval(this.COUNTER);
-//     //     console.log("UPDATED");
-//     // },
-//     // RUN: function(){
-//     //     // this.RUNNING = true;
-//     //     // this.update();
-//     //     this.COUNTER++;
-//     //     this.CURRENT_SECONDS--;
-//     //     console.log(isNaN(this.COUNTER));
-        
-//     // }
-    
-// }
-// // let counter = setInterval(periodTimer.RUN, 1000);
-// periodTimer.init();
-// console.log(periodTimer.showStats());
-// ---TIMER BLOCK ENDS 
-
-
+// TEAM LOGIC ---
 const teams = [
     homeTeam = {
     name : "Home Team",
@@ -179,3 +143,5 @@ function renderFouls(team){
         } 
     }
 }
+
+// --- END OF TEAM LOGIC
